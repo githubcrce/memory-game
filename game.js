@@ -33,10 +33,13 @@ window.onload = function() {
   <button onclick="start(3, 4)">3 x 4</button> <button onclick="start(4, 4)" style="w">4 x 4</button>
   <button onclick="start(4, 5)">4 x 5</button> <button onclick="start(5, 6)">5 x 6</button>
   <button onclick="start(6, 6)">6 x 6</button></center>`);
+
+  $("#restartGameButton").click(restartGame);
 }
 
 //Starting the game
 function start(r,l) {
+
     //Timer and moves
 
     //Generating item array and shuffling it
@@ -44,7 +47,10 @@ function start(r,l) {
     //Creating table
     
     //Hiding instructions screen
+    hideInstructions()
 
+    //show Restart button
+    showRestartButton()
 }
 
 //Function for flipping blocks
@@ -56,3 +62,35 @@ function change(x) {
   //Flip
 
 }
+
+//Function for hide the instructions
+function hideInstructions(){
+  $("#ol").hide()
+}
+
+//Function for show the instructions
+function showInstructions(){
+  $("#ol").show()
+}
+
+//Function for hide the instructions
+function toggleInstructions(){
+  $("#ol").toggle()
+}
+
+//Function for restart game
+function restartGame(){
+  //Show instructions and game modes again
+  showInstructions()
+  //Hide the initGameButton
+  $("#restartGameButton").css("visibility","hidden")
+}
+
+//Function for showing restart button
+function showRestartButton(){
+  $("#restartGameButton").css("visibility","visible")
+}
+
+
+
+
