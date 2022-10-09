@@ -38,4 +38,11 @@ body {
     padding-top: 10px;
     display: block;
 }
-
+button {
+    border-radius: 5px;
+    font-size: 20px;
+    margin: 5px;
+}
+button:hover {
+    box-shadow: 2px 5px;
+}
