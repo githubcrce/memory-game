@@ -56,3 +56,33 @@ button:hover {
 #restartGameButton:hover {
     box-shadow: 2px 5px;
 }
+
+#time {
+    position: absolute;
+    right: 20px;
+    font-size: 16px;
+    top: 8.5px;
+}
+
+#moves {
+    position: absolute;
+    left: 20px;
+    font-size: 16px;
+    top:8.5px;
+}
+
+p {
+    font-size: 40px;
+    margin-top:5px;
+}
+td {
+    background-color: transparent;
+    height:70px;
+    width:70px;
+}
+td, .inner, .front, .back {
+    border-radius: 4px;
+}
+table {
+    margin-top: 80px;
+}

@@ -39,19 +39,52 @@ window.onload = function() {
 
 //Starting the game
 function start(r,l) {
-
-    //Timer and moves
-
-    //Generating item array and shuffling it
-    
-    //Creating table
-    
-    //Hiding instructions screen
-    hideInstructions()
-
-    //show Restart button
-    showRestartButton()
+  //Timer and moves
+  min=0, sec=0, moves=0;
+  $("#time").html("Time: 00:00");
+  $("#moves").html("Moves: 0");
+  time = setInterval(function() {
+    sec++;
+    if(sec==60) {
+        min++; sec=0;
+    }
+    if(sec<10) 
+        $("#time").html("Time: 0"+min+":0"+sec);
+    else 
+      $("#time").html("Time: 0"+min+":"+sec);
+  }, 1000);
+  rem=r*l/2, noItems=rem;
+  mode = r+"x"+l;
+  //Generating item array and shuffling it
+  var items = [];
+  for (var i=0;i<noItems;i++)
+      items.push(emojis[i]);
+  for (var i=0;i<noItems;i++)
+      items.push(emojis[i]);
+  var tmp, c, p = items.length;
+  if(p) while(--p) {
+      c = Math.floor(Math.random() * (p + 1));
+      tmp = items[c];
+      items[c] = items[p];
+      items[p] = tmp;
+  }
+  
+  //Creating table
+  $("table").html("");
+  var n=1;
+  for (var i = 1;i<=r;i++) {
+      $("table").append("<tr>");
+      for (var j = 1;j<=l;j++) {
+         $("table").append(`<td id='${n}' onclick="change(${n})"><div class='inner'><div class='front'></div><div class='back'><p>${items[n-1]}</p></div></div></td>`);
+         n++;
+       }
+       $("table").append("</tr>");
+  }
+  
+  //Hiding instructions screen
+  $("#ol").fadeOut(500);
 }
+
 
 //Function for flipping blocks
 function change(x) {
