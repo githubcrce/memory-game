@@ -58,9 +58,9 @@ function start(r,l) {
   //Generating item array and shuffling it
   var items = [];
   for (var i=0;i<noItems;i++)
-      items.push(em[i]);
+      items.push(emojis[i]);
   for (var i=0;i<noItems;i++)
-      items.push(em[i]);
+      items.push(emojis[i]);
   var tmp, c, p = items.length;
   if(p) while(--p) {
       c = Math.floor(Math.random() * (p + 1));
