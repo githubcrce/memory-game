@@ -85,15 +85,71 @@ function start(r,l) {
   $("#ol").fadeOut(500);
 }
 
+var pre="", pID, ppID=0, turn=0, t="transform", flip="rotateY(180deg)", flipBack="rotateY(0deg)", time, mode;
 
 //Function for flipping blocks
 function change(x) {
   //Variables
+  let i = "#"+x+" .inner";
+  let f = "#"+x+" .inner .front";
+  let b = "#"+x+" .inner .back";
   
   //Dont flip for these conditions
+  if (turn==2 || $(i).attr("flip")=="block" || ppID==x) {}
   
   //Flip
-
+  else {
+    $(i).css(t, flip);
+    if (turn==1) {
+      //This value will prevent spam clicking
+      turn=2;
+      
+      //If both flipped blocks are not same
+      if (pre!=$(b).text()) {
+         setTimeout(function() {
+            $(pID).css(t, flipBack);
+            $(i).css(t, flipBack);
+            ppID=0;
+         },1000);
+      }
+      
+      //If blocks flipped are same
+      else {
+          rem--;
+          $(i).attr("flip", "block");
+          $(pID).attr("flip", "block");
+      }
+      
+      setTimeout(function() {
+         turn=0;
+         //Increase moves
+         moves++;
+         $("#moves").html("Moves: "+moves);
+      },1150);
+      
+    }
+    else {
+      pre = $(b).text();
+      ppID = x;
+      pID = "#"+x+" .inner";
+      turn=1;
+    }
+    
+    //If all pairs are matched
+    if (rem==0) {
+          clearInterval(time);
+          if (min==0) {
+              time = `${sec} seconds`;
+          }
+          else {
+              time = `${min} minute(s) and ${sec} second(s)`;
+          }
+          setTimeout(function() {
+              $("#ol").html(`<center><div id="iol"><h2>Congrats!</h2><p style="font-size:23px;padding:10px;">You completed the ${mode} mode in ${moves} moves. It took you ${time}.</p><p style="font-size:18px">Comment Your Score!<br/>Play Again ?</p><button onclick="start(3, 4)">3 x 4</button> <button onclick="start(4, 4)" style="w">4 x 4</button><button onclick="start(4, 5)">4 x 5</button><button onclick="start(5, 6)">5 x 6</button><button onclick="start(6, 6)">6 x 6</button></div></center>`);
+              $("#ol").fadeIn(750);
+          }, 1500);
+    }
+  }
 }
 
 //Function for hide the instructions
