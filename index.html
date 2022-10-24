@@ -11,17 +11,20 @@
     <script src="game.js"> </script>
 </head>
 <body>
+    <div id="container">
     <div id="ol"> </div>
-    <div style="height: 8px;"></div>
-    <div id="title">
-    <span id="logo">GITHUBCRCE MEMORY MATCHING GAME</span>
-    </div>
-    <div id="title" style="height: 40px;">
-        <span id="moves"></span>
-        <span id="time"></span>
-    </div>
-    <center>
+    
+    <section id="tableHolder">
+        <div id="heading">
+            <span id="logo">GITHUBCRCE MEMORY MATCHING GAME</span>
+            </div>
+        <div id="title">
+            <span id="moves"></span>
+            <span id="time"></span>
+        </div>
+        <button id="restartButton" onclick="restartGame()">restart game</button>
         <table cellspacing="0"></table>
-    </center>
+    </section>
+    </div>
 </body>
 </html>
