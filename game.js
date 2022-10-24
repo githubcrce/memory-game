@@ -88,6 +88,8 @@ function start(r,l) {
 
 var pre="", pID, ppID=0, turn=0, t="transform", flip="rotateY(180deg)", flipBack="rotateY(0deg)", time, mode;
 
+var pre="", pID, ppID=0, turn=0, t="transform", flip="rotateY(180deg)", flipBack="rotateY(0deg)", time, mode;
+
 //Function for flipping blocks
 function change(x) {
   //Variables
